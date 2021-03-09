@@ -1,3 +1,9 @@
+/**
+ * Aliza Eliacheff 1708123 AND Avigail Fitoussi
+ * alizaeliachef@gmail.com   avigailfitoussi@gmail.com
+ */
+
+
 package program;
 
 import primitives.*;
