@@ -20,20 +20,6 @@ public class Cylinder extends Tube{
     }
 
     /**
-     * Constructor of Cylinder
-     * @param _radius
-     * @param _axisRay
-     * @param _height
-     */
-    /**
-     public Cylinder(double _radius, Ray _axisRay, double _height)
-     {
-     super(_radius, _axisRay);
-     this._height = _height;
-     }
-
-
-     /**
      * Function getNormal
      * @param p
      * @return

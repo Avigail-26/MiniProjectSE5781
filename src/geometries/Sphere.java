@@ -7,46 +7,50 @@ public class Sphere implements Geometry{
     /**
      *fields (center)
      */
-    Point3D _center;
-    double _radius;
+    final Point3D _center;
+    final  double _radius;
+
     /**
-     * Constructor of Sphere
-     * @param _radius
-     * @param _center
+     *
+     * @param center
+     * @param radius
      */
-
-
-    public Sphere(Point3D _center, double _radius) {
-        this._center = _center;
-        this._radius = _radius;
+    public Sphere(Point3D center, double radius) {
+        _center = center;
+        _radius = radius;
     }
 
     /**
-     * GetNormal Function
-     * @param p
-     * @return null
+     *
+     * @return
      */
-    @Override
-    public Vector getNormal(Point3D p)
-    {
-        return null;
-    }
-
-    /**
-     * GetCenter function
-     * @return center
-     */
-    public Point3D get_center() {
+    public Point3D getCenter() {
         return _center;
     }
 
     /**
-     * ToString function
-     * @return string with the center
+     *
+     * @return
      */
+    public double getRadius() {
+        return _radius;
+    }
+
     @Override
     public String toString() {
-        return super.toString()+
-                " center" + _center ;
+        return "Sphere{" +
+                "_center=" + _center +
+                ", _radius=" + _radius +
+                '}';
+    }
+
+    /**
+     *
+     * @param point
+     * @return
+     */
+    @Override
+    public Vector getNormal(Point3D point) {
+        return null;
     }
 }

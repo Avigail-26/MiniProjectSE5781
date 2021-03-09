@@ -14,12 +14,12 @@ public class Tube implements Geometry{
 
     /**
      * Constructor of the tube class
-     * @param _radius
-     * @param _axisRay
+     * @param radius
+     * @param axisRay
      */
-    public Tube(Ray _axisRay, double _radius) {
-        this._axisRay = _axisRay;
-        this._radius = _radius;
+    public Tube(Ray axisRay, double radius) {
+        _axisRay = axisRay;
+        _radius = radius;
     }
 
     /**

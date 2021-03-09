@@ -14,6 +14,12 @@ public class Point3D {
         _z = z;
     }
 
+    /**
+     * basic constructor for Point3D
+     * @param x value for X Coordinate
+     * @param y value for Y Coordinate
+     * @param z value for Z Coordinate
+     */
     public Point3D(double x, double y, double z) {
         _x =new Coordinate(x);
         _y =new Coordinate(y);
