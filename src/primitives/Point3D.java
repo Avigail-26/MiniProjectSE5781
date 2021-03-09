@@ -1,7 +1,5 @@
 package primitives;
 
-import java.util.Objects;
-
 public class Point3D {
 
     public static Point3D ZERO = new Point3D(0d, 0d, 0d);
@@ -10,29 +8,18 @@ public class Point3D {
     final Coordinate _y;
     final Coordinate _z;
 
-    public Point3D(Coordinate _x, Coordinate _y, Coordinate _z) {
-        this._x = _x;
-        this._y = _y;
-        this._z = _z;
+    public Point3D(Coordinate x, Coordinate y, Coordinate z) {
+        _x = x;
+        _y = y;
+        _z = z;
     }
 
     public Point3D(double x, double y, double z) {
-        _x = new Coordinate(x);
-        _y = new Coordinate(y);
-        _z = new Coordinate(z);
+        _x =new Coordinate(x);
+        _y =new Coordinate(y);
+        _z =new Coordinate(z);
     }
 
-    public Coordinate get_x() {
-        return _x;
-    }
-
-    public Coordinate get_y() {
-        return _y;
-    }
-
-    public Coordinate get_z() {
-        return _z;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -76,9 +63,9 @@ public class Point3D {
             throw new IllegalArgumentException("cannot create vector to point(0,0,0)");
         }
         return new Vector(new Point3D(
-                pt2._x.coord - _x.coord,
-                pt2._y.coord - _y.coord,
-                pt2._z.coord - _z.coord
+                _x.coord - pt2._x.coord,
+                _y.coord - pt2._y.coord,
+                _z.coord - pt2._z.coord
         ));
     }
 
