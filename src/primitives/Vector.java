@@ -15,7 +15,7 @@ public class Vector {
     }
 
     public Vector(Vector v) {
-        this._head = v._head;
+        _head = v._head;
     }
 
     /**

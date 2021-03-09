@@ -31,10 +31,14 @@ public class Cylinder extends Tube{
     }
 
     /**
-     * Function get_height
+     * Function getHeight
      * @return
      */
-    public double get_height() {
+    /**
+     *
+
+     */
+    public double getHeight() {
         return _height;
     }
 
