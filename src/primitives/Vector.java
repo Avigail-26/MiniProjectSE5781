@@ -7,6 +7,10 @@ import static primitives.Point3D.ZERO;
 public class Vector {
     Point3D _head;
 
+    /**
+     * mainly used constructor
+     * @param head
+     */
     public Vector(Point3D head) {
         if (head.equals(ZERO)) {
             throw new IllegalArgumentException("vector head cannot be Point(0,0,0)");
@@ -19,18 +23,20 @@ public class Vector {
     }
 
     /**
-     * Vector constructor that gets 3 double numbers and create a new vector from them
+     * Vector constructor that gets 3 double numb1ers and create a new vector from them
      *
-     * @param _x x coordinate value
-     * @param _y y coordinate value
-     * @param _z z coordinate value
+     * @param x x coordinate value
+     * @param y y coordinate value
+     * @param z z coordinate value
      */
-    public Vector(double _x, double _y, double _z) {
+    public Vector(double x, double y, double z) {
 
-        if (new Point3D(new Coordinate(_x), new Coordinate(_y), new Coordinate(_z)).equals(Point3D.ZERO)) {
+        /**if (new Point3D(new Coordinate(_x), new Coordinate(_y), new Coordinate(_z)).equals(Point3D.ZERO)) {
             throw new IllegalArgumentException("vector cannot be the zero vector");
         }
         this._head = new Point3D(new Coordinate(_x), new Coordinate(_y), new Coordinate(_z));
+         **/
+        this(new Point3D(x,y,z));
     }
 
 
@@ -42,10 +48,11 @@ public class Vector {
      * @param z-coordinate
      */
     public Vector(Coordinate x, Coordinate y, Coordinate z) {
-        if (new Point3D(x, y, z).equals(Point3D.ZERO)) {
+        /**if (new Point3D(x, y, z).equals(Point3D.ZERO)) {
             throw new IllegalArgumentException("vector cannot be the zero vector");
         }
-        this._head = new Point3D(x, y, z);
+        this._head = new Point3D(x, y, z);**/
+        this(new Point3D(x,y,z));
     }
 
     /**

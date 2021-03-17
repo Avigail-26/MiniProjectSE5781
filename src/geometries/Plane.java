@@ -28,14 +28,20 @@ public class Plane implements Geometry
      */
     public Plane(Point3D vertex, Point3D vertex1, Point3D vertex2) {
         _q0 = vertex;
-        _normal = null;
+        //_normal = null;
+
+        Vector U = new Vector(vertex1.subtract(vertex));
+        Vector V = new Vector(vertex2.subtract(vertex));
+        Vector N = U.crossProduct(V);
+        N.normalize();
+        _normal = N;
+
     }
     /**
      * getNormal Function
-     * @return vector
+     * @return normal vector
      */
     public Vector getNormal() {
-
         return _normal;
     }
     /**
@@ -45,13 +51,7 @@ public class Plane implements Geometry
     public Point3D get_q0() {
         return _q0;
     }
-    /**
-     * GetNormal Function
-     * @return normal vector
-     */
-    public Vector get_normal() {
-        return _normal;
-    }
+
 
     /**
      * Function ToString
