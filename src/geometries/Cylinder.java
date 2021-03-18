@@ -11,11 +11,11 @@ public class Cylinder extends Tube{
     /**
      * Constructor of the tube class
      *
-     * @param axisRay
      * @param radius
+     * @param axisRay
      */
-    public Cylinder(Ray axisRay, double radius, double height) {
-        super(axisRay, radius);
+    public Cylinder(double radius,Ray axisRay, double height) {
+        super(radius, axisRay);
         _height = height;
     }
 

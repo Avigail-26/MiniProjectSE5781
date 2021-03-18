@@ -11,8 +11,8 @@ class CylinderTest {
 
     @Test
     void getNormal() {
-/**
-            Point3D p0=new Point3D(6,4,3);
+
+           /** Point3D p0=new Point3D(6,4,3);
             Vector direction=new Vector(3,4,5);
             Ray r=new Ray(p0,direction);
             Cylinder c= new Cylinder(4, radius,7);

@@ -8,12 +8,6 @@ public class Point3D {
     final Coordinate _y;
     final Coordinate _z;
 
-    public Point3D(Coordinate x, Coordinate y, Coordinate z) {
-        _x = x;
-        _y = y;
-        _z = z;
-    }
-
     /**
      * basic constructor for Point3D
      * @param x value for X Coordinate
@@ -46,9 +40,9 @@ public class Point3D {
      * @return (x2-x1)^2 + (y2-y1)^2 + (z2-z1)^2
      */
     public double distanceSquared(Point3D point3D) {
-        double xx = (point3D._x.coord - _x.coord) * (point3D._x.coord - _x.coord);
-        double yy = (point3D._y.coord - _y.coord) * (point3D._y.coord - _y.coord);
-        double zz = (point3D._z.coord - _z.coord) * (point3D._z.coord - _z.coord);
+        double xx = (point3D._x._coord - _x._coord) * (point3D._x._coord - _x._coord);
+        double yy = (point3D._y._coord - _y._coord) * (point3D._y._coord - _y._coord);
+        double zz = (point3D._z._coord - _z._coord) * (point3D._z._coord - _z._coord);
 
         return (xx + yy + zz);
 
@@ -69,17 +63,17 @@ public class Point3D {
             throw new IllegalArgumentException("cannot create vector to point(0,0,0)");
         }
         return new Vector(new Point3D(
-                _x.coord - pt2._x.coord,
-                _y.coord - pt2._y.coord,
-                _z.coord - pt2._z.coord
+                _x._coord - pt2._x._coord,
+                _y._coord - pt2._y._coord,
+                _z._coord - pt2._z._coord
         ));
     }
 
     public Point3D add(Vector vector) {
         return new Point3D(
-                _x.coord + vector._head._x.coord,
-                _y.coord + vector._head._y.coord,
-                _z.coord + vector._head._z.coord
+                _x._coord + vector._head._x._coord,
+                _y._coord + vector._head._y._coord,
+                _z._coord + vector._head._z._coord
 
         );
     }

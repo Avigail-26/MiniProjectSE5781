@@ -6,8 +6,8 @@ public class Ray {
     /**
      * Fields (point3D,vector)
      */
-    Point3D _p0;
-    Vector _dir;
+    final Point3D _p0;
+    final Vector _dir;
 
     /**
      *

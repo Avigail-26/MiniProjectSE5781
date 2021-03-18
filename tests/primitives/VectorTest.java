@@ -103,7 +103,7 @@ class VectorTest {
         // ============ Equivalence Partitions Tests ==============
 
         Vector v = new Vector(1, 2, 3);
-        Vector vCopy = new Vector(v.get_head());
+        Vector vCopy = new Vector(v.getHead());
         Vector vCopyNormalize = vCopy.normalize();
         if (vCopy != vCopyNormalize)
             fail("ERROR: normalize() function creates a new vector");

@@ -22,34 +22,21 @@ public class Plane implements Geometry
     }
     /**
      * Constructor Plane with three Point3D
-     * @param vertex
-     * @param vertex1
-     * @param vertex2
+     * @param p1
+     * @param p2
+     * @param p3
      */
-    public Plane(Point3D vertex, Point3D vertex1, Point3D vertex2) {
-        _q0 = vertex;
-        //_normal = null;
+    public Plane(Point3D p1, Point3D p2, Point3D p3) {
+        _q0 = p1;
 
-        Vector U = new Vector(vertex1.subtract(vertex));
-        Vector V = new Vector(vertex2.subtract(vertex));
+        Vector U = new Vector(p2.subtract(p1));
+        Vector V = new Vector(p3.subtract(p1));
+
         Vector N = U.crossProduct(V);
+
         N.normalize();
         _normal = N;
 
-    }
-    /**
-     * getNormal Function
-     * @return normal vector
-     */
-    public Vector getNormal() {
-        return _normal;
-    }
-    /**
-     * Get Function
-     * @return point3D
-     */
-    public Point3D get_q0() {
-        return _q0;
     }
 
 
@@ -62,9 +49,32 @@ public class Plane implements Geometry
         return  "point" + _q0 +  ", normal" + _normal;
     }
 
+    /**
+     * getter for reference point of the Plane
+     * @return the reference point
+     */
+    public Point3D getQ0() {
+        return _q0;
+    }
+
+    /**
+     * getter for normal field of the Plane
+     * @deprecated use instead the {@link Plane#getNormal(Point3D)} with null as parameter value.
+     * @return normal vector
+     */
+    @Deprecated
+    public Vector getNormal() {
+        return _normal;
+    }
+
+    /**
+     * implementation of getNormal from Geometry interface
+     * @param point
+     * @return
+     */
     @Override
     public Vector getNormal(Point3D point) {
-        return null;
+        return _normal;
     }
 }
 
