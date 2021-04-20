@@ -39,4 +39,9 @@ public class Ray {
     public String toString() {
         return "[" + _p0 + _dir + ']';
     }
+
+    public Point3D getTargetPoint(double t) {
+
+        return _p0.add(_dir.scale(t));
+    }
 }

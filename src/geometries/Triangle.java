@@ -22,4 +22,9 @@ public class Triangle extends Polygon{
     public String toString() {
         return "Triangle{}" + super.toString();
     }
+
+    @Override
+    public List<Point3D> findIntersections(Ray ray) {
+        return super.findIntersections(ray);
+    }
 }

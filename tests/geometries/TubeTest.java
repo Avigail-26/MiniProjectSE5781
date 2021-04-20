@@ -23,4 +23,6 @@ class TubeTest {
             Tube tb = new Tube(1, new Ray(new Point3D(0,0,1), new Vector(0, 1, 0)));
             assertEquals(new Vector(0,0,1),tb.getNormal(new Point3D(0,0.5,2)));
     }
+
+
 }
