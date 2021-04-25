@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * composite class for all geometries
+ * Geometries class represents a list of shapes of all kinds
  */
 public class Geometries implements Intersectable {
     List<Intersectable> _intersectables = null;
@@ -26,6 +26,9 @@ public class Geometries implements Intersectable {
     }
 
 
+    /**
+     * @return list of intersections from all shapes in list
+     */
     @Override
     public List<Point3D> findIntersections(Ray ray) {
         List<Point3D> result = null;
