@@ -46,9 +46,8 @@ class PlaneTest {
 
         //**** Group: ray is orthogonal to the plane
         //TC13: the ray is before the plane
-        //assertEquals( List.of(new Point3D(1,1,0)),
-            //    plane.findIntersections(new Ray(new Point3D(1,1,-1), new Vector(0,0,1))),"the ray is orthogonal and before the plane");
-
+        assertEquals(List.of(new Point3D(1,1,0)),
+                plane.findIntersections(new Ray(new Point3D(1,1,-1), new Vector(0,0,1))),"the ray is orthogonal and before the plane");
         //TC14: the ray is in the plane
         //assertNull(plane.findIntersections(new Ray(new Point3D(1,1,0), new Vector(0,0,1))),"the ray is orthogonal and in the plane");
 

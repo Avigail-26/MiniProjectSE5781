@@ -69,8 +69,9 @@ public class Tube extends RadialGeometry implements Geometry{
     }
 
     /*
-Find intersections for Tube shape... to do
- */
+Find intersections for Tube shape
+     */
+
     @Override
     public List<Point3D> findIntersections(Ray ray) {
         return null;

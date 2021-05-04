@@ -44,7 +44,7 @@ public class Cylinder extends Tube{
 
     /**
      * Function ToString
-     * @return string with tostring of Tube and height
+     * @return string with toString of Tube and height
      */
     @Override
     public String toString() {

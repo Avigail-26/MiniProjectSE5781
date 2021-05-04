@@ -35,7 +35,6 @@ public class Triangle extends Polygon{
             return null;
         }
 
-
         Point3D P0 = ray.getP0();
         Vector v = ray.getDir();
 
@@ -60,7 +59,5 @@ public class Triangle extends Polygon{
     private boolean is_inside_triangle(double a1, double a2, double a3) {
         return (a1 > 0 && a2 > 0 && a3 > 0) || (a1 < 0 && a2 < 0 && a3 < 0);
     }
-//    public List<Point3D> findIntersections(Ray ray) {
-//        return super.findIntersections(ray);
-//    }
+
 }
