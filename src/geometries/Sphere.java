@@ -8,6 +8,9 @@ import java.util.List;
 
 import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
+/*
+*represents a sphere in a 3D Cartesian coordinate system
+*/
 
 public class Sphere extends RadialGeometry implements Geometry{
     /**
@@ -27,7 +30,7 @@ public class Sphere extends RadialGeometry implements Geometry{
 
     /**
      *
-     * @return
+     * @return middle of the sphere
      */
     public Point3D getCenter() {
         return _center;
@@ -52,6 +55,9 @@ public class Sphere extends RadialGeometry implements Geometry{
         return O_P.normalize();
     }
 
+    /**
+     * Returns list of intersection points with the sphere
+     */
     @Override
     public List<Point3D> findIntersections(Ray ray) {
         Vector u = _center.subtract(ray.getP0());

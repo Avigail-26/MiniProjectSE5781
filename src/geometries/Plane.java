@@ -63,16 +63,6 @@ public class Plane implements Geometry
     }
 
     /**
-     * getter for normal field of the Plane
-     * @deprecated use instead the {@link Plane#getNormal(Point3D)} with null as parameter value.
-     * @return normal vector
-     */
-    @Deprecated
-    public Vector getNormal() {
-        return _normal;
-    }
-
-    /**
      * implementation of getNormal from Geometry interface
      * @param point
      * @return
@@ -82,10 +72,12 @@ public class Plane implements Geometry
         return _normal;
     }
 
+    /**
+    *returns intersection point. if ray doesn't intersect or ray's head is on the plane
+     */
     @Override
     public List<Point3D> findIntersections(Ray ray) {
         Point3D P0 = ray.getP0();
-        ;
         Vector v = ray.getDir();
 
         if (_q0.equals(P0)){
@@ -97,9 +89,11 @@ public class Plane implements Geometry
         if (isZero(nv)) {
             return null;
         }
-        //explication a suivre...
+        //Calculate intersections between ray and plane
         double t = _normal.dotProduct(_q0.subtract(P0));
         t /= nv;
+
+        if (isZero(t)) return null;
 
         Point3D p = ray.getTargetPoint(t);
         return List.of(p);

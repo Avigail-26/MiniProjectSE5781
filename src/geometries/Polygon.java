@@ -89,6 +89,9 @@ public class Polygon implements Geometry {
         return plane.getNormal(null);
     }
 
+/*
+Find intersections for Polygon shape... to do
+ */
     @Override
     public List<Point3D> findIntersections(Ray ray) {
         return null;

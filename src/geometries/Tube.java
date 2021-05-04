@@ -68,6 +68,9 @@ public class Tube extends RadialGeometry implements Geometry{
         return p.subtract(O).normalize();
     }
 
+    /*
+Find intersections for Tube shape... to do
+ */
     @Override
     public List<Point3D> findIntersections(Ray ray) {
         return null;
