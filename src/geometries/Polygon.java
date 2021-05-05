@@ -89,11 +89,36 @@ public class Polygon implements Geometry {
         return plane.getNormal(null);
     }
 
-/*
-Find intersections for Polygon shape... to do
- */
+    /**
+     * find intersections point3D with polygon
+     * @param ray ray for casting
+     * @return list of intersections point3D or null if there were not found
+     */
+
     @Override
     public List<Point3D> findIntersections(Ray ray) {
-        return null;
+        List<Point3D> intersections = plane.findIntersections(ray);
+        if (intersections == null) return null;
+
+        Point3D p0 = ray.getP0();
+        Vector v = ray.getDir();
+
+        Vector v1  = vertices.get(1).subtract(p0);
+        Vector v2 = vertices.get(0).subtract(p0);
+        double sign = v.dotProduct(v1.crossProduct(v2));
+        if (isZero(sign))
+            return null;
+
+        boolean positive = sign > 0;
+
+        for (int i = vertices.size() - 1; i > 0; --i) {
+            v1 = v2;
+            v2 = vertices.get(i).subtract(p0);
+            sign = alignZero(v.dotProduct(v1.crossProduct(v2)));
+            if (isZero(sign)) return null;
+            if (positive != (sign >0)) return null;
+        }
+
+        return intersections;
     }
 }
