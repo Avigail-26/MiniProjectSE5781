@@ -22,11 +22,20 @@ public class Ray {
     public Point3D getP0() {
         return _p0;
     }
-
+/*
+Returns:
+ray direction in new vector so the directoin can't be changed
+ */
     public Vector getDir() {
         return _dir;
     }
 
+    /*
+    Params:
+o – ray to compare to
+Returns:
+true if direction and head are the same in both rays
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -8,6 +8,9 @@ import java.util.List;
 
 import static primitives.Util.isZero;
 
+/*
+3d Plane represents a geometric plane in 3D Cartesian coordinates using a normal and a point on the plane
+ */
 public class Plane implements Geometry
 {
     /**
