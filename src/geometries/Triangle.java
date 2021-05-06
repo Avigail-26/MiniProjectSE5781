@@ -37,7 +37,7 @@ public class Triangle extends Polygon{
 
         Point3D P0 = ray.getP0();
         Vector v = ray.getDir();
-
+        // we create the three vectors
         Vector v1 = vertices.get(0).subtract(P0);
         Vector v2 = vertices.get(1).subtract(P0);
         Vector v3 = vertices.get(2).subtract(P0);

@@ -87,6 +87,11 @@ public class Vector {
         return new Vector(_head._x._coord * d, _head._y._coord * d, _head._z._coord * d);
     }
 
+    /**
+     * Calculates dot product between two vectors
+     * @param v an vector to calculate dotProduct
+     * @return dot product between this vector to other vector
+     */
     public double dotProduct(Vector v) {
         double u1 = _head._x._coord;
         double u2 = _head._y._coord;
@@ -97,7 +102,11 @@ public class Vector {
 
         return (u1 * v1 + u2 * v2 + u3 * v3);
     }
-
+    /**
+     * Calculates cross product between two vectors
+     * @param v a vector to calculate crossProduct
+     * @return cross product between this vector to other vector
+     */
     public Vector crossProduct(Vector v) {
         double u1 = _head._x._coord;
         double u2 = _head._y._coord;

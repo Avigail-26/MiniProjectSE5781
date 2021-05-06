@@ -34,7 +34,7 @@ public class Tube extends RadialGeometry implements Geometry{
     }
 
     /**
-     * getNormal function
+     * getNormal function, normal vector of a tube
      * @param p-point3D
      * @return vector
      */

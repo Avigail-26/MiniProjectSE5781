@@ -19,9 +19,9 @@ public class Sphere extends RadialGeometry implements Geometry{
     final protected Point3D _center;
 
     /**
-     *
-     * @param center
-     * @param radius
+     * Constructor for Sphere class, gets a radius and a center point3D, and creates a new sphere
+     * @param radius radius of a sphere
+     * @param center a point3D, the center point of a sphere
      */
     public Sphere(double radius,Point3D center) {
         super(radius);
@@ -29,7 +29,7 @@ public class Sphere extends RadialGeometry implements Geometry{
     }
 
     /**
-     *
+     *getter
      * @return middle of the sphere
      */
     public Point3D getCenter() {
@@ -56,15 +56,20 @@ public class Sphere extends RadialGeometry implements Geometry{
     }
 
     /**
-     * Returns list of intersection points with the sphere
+     * find intersections point3D with sphere
+     * @param ray ray for casting
+     * @return list of intersections point3D or null if there were not found
      */
     @Override
     public List<Point3D> findIntersections(Ray ray) {
+
+        // 𝑢 = 𝑂 − 𝑃0 distance from the center and the p0
         Vector u = _center.subtract(ray.getP0());
         Vector v = ray.getDir();
         double tm = u.dotProduct(v);
+        //tm=v*u the distance between p0 and the point with makes 90 degrees with the center
         double d = alignZero(Math.sqrt(u.lengthSquared() - tm*tm));
-
+        //d=u^2+tm^2 distance between the center and the point that  makes 90 degrees with the center
         if(d> _radius){
             return null;
         }
