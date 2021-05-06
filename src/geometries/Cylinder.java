@@ -1,7 +1,9 @@
 package geometries;
 
 import primitives.*;
-
+/*
+class represents a cylinder in 3D Cartesian coordinate
+ */
 public class Cylinder extends Tube{
     /**
      * cylinder height
@@ -34,10 +36,7 @@ public class Cylinder extends Tube{
      * Function getHeight
      * @return
      */
-    /**
-     *
 
-     */
     public double getHeight() {
         return _height;
     }

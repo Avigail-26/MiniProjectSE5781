@@ -20,6 +20,12 @@ public class Point3D {
         _z =new Coordinate(z);
     }
 
+/*
+Params:
+o – point to compare to
+Returns:
+true if x y and z are equal in both point
+ */
 
     @Override
     public boolean equals(Object o) {
@@ -68,7 +74,12 @@ public class Point3D {
         return Math.sqrt(distanceSquared(point3D));
 
     }
-
+/*
+Params:
+pt2 – vector to subtract from current
+Returns:
+new vector with pt2 subtracted from current point's head
+ */
     public Vector subtract(Point3D pt2) {
         if (pt2.equals(this)) {
             throw new IllegalArgumentException("cannot create vector to point(0,0,0)");
