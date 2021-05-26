@@ -1,5 +1,6 @@
 package primitives;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Ray {
@@ -10,8 +11,7 @@ public class Ray {
     final Vector _dir;
 
     /**
-     *
-     * @param p0 point of origin of the ray
+     * @param p0  point of origin of the ray
      * @param dir direction of the ray, normalized
      */
     public Ray(Point3D p0, Vector dir) {
@@ -22,10 +22,11 @@ public class Ray {
     public Point3D getP0() {
         return _p0;
     }
-/*
-Returns:
-ray direction in new vector so the directoin can't be changed
- */
+
+    /*
+    Returns:
+    ray direction in new vector so the directoin can't be changed
+     */
     public Vector getDir() {
         return _dir;
     }
@@ -52,5 +53,30 @@ true if direction and head are the same in both rays
     public Point3D getTargetPoint(double t) {
 
         return _p0.add(_dir.scale(t));
+    }
+
+    /**
+     * find the closest Point to Ray origin
+     *
+     * @param pointsList intersections point List
+     * @return closest point
+     */
+    public Point3D findClosestPoint(List<Point3D> pointsList) {
+        Point3D result = null;
+        double closestDistance = Double.MAX_VALUE;
+
+        if (pointsList == null) {
+            return null;
+        }
+
+        for (Point3D p : pointsList) {
+            double temp = p.distance(_p0);
+            if (temp < closestDistance) {
+                closestDistance = temp;
+                result = p;
+            }
+        }
+
+        return result;
     }
 }
