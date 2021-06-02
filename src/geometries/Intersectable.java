@@ -11,6 +11,9 @@ interface intersectable with findintersections function
  */
 public interface Intersectable {
 
+    /**
+     *
+     */
     public static class GeoPoint {
         public Geometry geometry;
         public Point3D point;
