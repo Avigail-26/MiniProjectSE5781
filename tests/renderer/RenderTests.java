@@ -7,6 +7,8 @@ import geometries.Triangle;
 import org.junit.jupiter.api.Test;
 import primitives.Color;
 import primitives.Point3D;
+import primitives.Ray;
+import primitives.Vector;
 
 public class RenderTests {
 	/**
@@ -28,6 +30,7 @@ public class RenderTests {
 
 		ImageWriter imageWriter = new ImageWriter("base render test 222", 1000, 1000);
 		Render render = new Render()
+				.setOriginRay(new Ray(new Point3D(0,0, 0), new Vector(0, 0, -100)))
 				.setImageWriter(imageWriter)
 				.setScene(scene)
 				.setRayTracer(new RayTracerBasic(scene));
