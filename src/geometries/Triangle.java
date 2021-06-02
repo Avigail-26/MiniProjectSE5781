@@ -60,4 +60,8 @@ public class Triangle extends Polygon{
         return (a1 > 0 && a2 > 0 && a3 > 0) || (a1 < 0 && a2 < 0 && a3 < 0);
     }
 
+    @Override
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
+        return super.findGeoIntersections(ray);
+    }
 }

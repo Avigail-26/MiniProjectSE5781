@@ -11,7 +11,7 @@ import static primitives.Util.isZero;
 /*
 3d Plane represents a geometric plane in 3D Cartesian coordinates using a normal and a point on the plane
  */
-public class Plane implements Geometry
+public class Plane extends Geometry
 {
     /**
      *fields of class Plane
@@ -76,15 +76,17 @@ public class Plane implements Geometry
     }
 
     /**
-    *returns intersection point. if ray doesn't intersect or ray's head is on the plane
+     * returns intersection point. if ray doesn't intersect or ray's head is on the plane
      */
+    //
+
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
         Point3D P0 = ray.getP0();
         Vector v = ray.getDir();
 
         if (_q0.equals(P0)){
-            return  List.of(_q0);
+            return null;
         }
         double nv = _normal.dotProduct(v);
 
@@ -99,7 +101,7 @@ public class Plane implements Geometry
         if (isZero(t)) return null;
 
         Point3D p = ray.getTargetPoint(t);
-        return List.of(p);
+        return List.of(new GeoPoint(this, p));
     }
 
 

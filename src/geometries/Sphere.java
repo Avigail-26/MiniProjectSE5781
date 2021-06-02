@@ -12,7 +12,7 @@ import static primitives.Util.isZero;
 *represents a sphere in a 3D Cartesian coordinate system
 */
 
-public class Sphere extends RadialGeometry implements Geometry{
+public class Sphere extends RadialGeometry{
     /**
      *fields (center)
      */
@@ -60,17 +60,27 @@ public class Sphere extends RadialGeometry implements Geometry{
      * @param ray ray for casting
      * @return list of intersections point3D or null if there were not found
      */
-    @Override
-    public List<Point3D> findIntersections(Ray ray) {
 
+
+    @Override
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
         // 𝑢 = 𝑂 − 𝑃0 distance from the center and the p0
-        Vector u = _center.subtract(ray.getP0());
+        Point3D p0 = ray.getP0();
         Vector v = ray.getDir();
-        double tm = u.dotProduct(v);
+
+        double tm = 0;
+        double d = 0;
         //tm=v*u the distance between p0 and the point with makes 90 degrees with the center
-        double d = alignZero(Math.sqrt(u.lengthSquared() - tm*tm));
+        if (!p0.equals(_center)){
+            Vector u = _center.subtract(p0);
+
+            tm = u.dotProduct(v);
+
+            d = alignZero(Math.sqrt(u.lengthSquared() - tm*tm));
+        }
+
         //d=u^2+tm^2 distance between the center and the point that  makes 90 degrees with the center
-        if(d> _radius){
+        if(d>= _radius){
             return null;
         }
         double th = alignZero(Math.sqrt(_radius*_radius - d*d));
@@ -79,19 +89,30 @@ public class Sphere extends RadialGeometry implements Geometry{
         if(isZero(th)){
             return null;
         }
-        double t1= alignZero(tm+th);
-        double t2= alignZero(tm-th);
+        double t1= alignZero(tm-th);
+        double t2= alignZero(tm+th);
 
         if(t1>0&&t2>0){
-            return List.of(ray.getTargetPoint(t1),ray.getTargetPoint(t2));
+            Point3D p1 = p0.add(v.scale(t1));
+            Point3D p2 = p0.add(v.scale(t2));
+
+            return List.of(new GeoPoint(this,p1),new GeoPoint(this,p2));
         }
         if(t1>0){
-            return List.of(ray.getTargetPoint(t1));
+            Point3D p1 = p0.add(v.scale(t1));
+
+            return List.of(new GeoPoint(this, p1));
         }
         if(t2>0){
-            return List.of(ray.getTargetPoint(t2));
+            Point3D p2 = p0.add(v.scale(t2));
+
+            return List.of(new GeoPoint(this, p2));
         }
         return  null;
     }
 
+    @Override
+    public List<Point3D> findIntersections(Ray ray) {
+        return null;
+    }
 }

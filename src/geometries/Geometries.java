@@ -31,11 +31,14 @@ adds geometries to list
     /**
      * @return list of intersections from all shapes in list
      */
+
+
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
-        List<Point3D> result = null;
+    public List<GeoPoint> findGeoIntersections(Ray ray) {
+        List<GeoPoint> result = null;
+
         for (Intersectable item : _intersectables) {
-            List<Point3D> itemIntersectionPoints = item.findIntersections(ray);
+            List<GeoPoint> itemIntersectionPoints = item.findGeoIntersections(ray);
             if (itemIntersectionPoints != null) {
                 if (result == null) {
                     result = new LinkedList<>();
