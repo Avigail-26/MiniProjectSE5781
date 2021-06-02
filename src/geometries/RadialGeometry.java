@@ -5,7 +5,7 @@ import primitives.Ray;
 
 import java.util.List;
 
-public abstract class RadialGeometry {
+public abstract class RadialGeometry extends Geometry {
     final protected double _radius;
 
     public RadialGeometry(double radius) {

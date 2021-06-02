@@ -2,7 +2,7 @@ package primitives;
 
 import java.util.List;
 import java.util.Objects;
-
+import geometries.Intersectable.GeoPoint;
 public class Ray {
     /**
      * Fields (point3D,vector)
@@ -31,6 +31,24 @@ public class Ray {
         return _dir;
     }
 
+    public GeoPoint getClosestGeoPoints(List<GeoPoint> pointList) {
+        GeoPoint result = null;
+        double closestDistance = Double.MAX_VALUE;
+
+        if (pointList == null) {
+            return null;
+        }
+
+        for (GeoPoint geo : pointList) {
+            double temp = geo.point.distance(_p0);
+            if (temp < closestDistance) {
+                closestDistance = temp;
+                result = geo;
+            }
+        }
+
+        return result;
+    }
     /*
     Params:
 o – ray to compare to
