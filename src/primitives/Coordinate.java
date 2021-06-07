@@ -35,7 +35,7 @@ public final class Coordinate {
         if (obj == null) return false;
         if (!(obj instanceof Coordinate)) return false;
         Coordinate other = (Coordinate)obj;
-        return isZero(_coord - other._coord);
+        return isZero(round(_coord, 1) - round(other._coord, 1));
     }
 
     @Override

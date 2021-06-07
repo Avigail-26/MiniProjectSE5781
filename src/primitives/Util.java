@@ -1,5 +1,8 @@
 package primitives;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 /**
  * Util class is used for some internal utilities, e.g. controlling accuracy
  *
@@ -65,6 +68,14 @@ public abstract class Util {
      */
     public static double random(double min, double max) {
         return Math.random() * (max - min) + min;
+    }
+
+    public static double round(double value, int place) {
+        if (place < 0) throw new IllegalArgumentException();
+
+        BigDecimal bd = BigDecimal.valueOf(value);
+        bd = bd.setScale(place, RoundingMode.HALF_UP);
+        return bd.doubleValue();
     }
 
 }

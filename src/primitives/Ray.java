@@ -2,7 +2,11 @@ package primitives;
 
 import java.util.List;
 import java.util.Objects;
+
 import geometries.Intersectable.GeoPoint;
+
+import static primitives.Util.isZero;
+
 public class Ray {
     /**
      * Fields (point3D,vector)
@@ -25,7 +29,7 @@ public class Ray {
 
     /*
     Returns:
-    ray direction in new vector so the directoin can't be changed
+    ray direction in new vector so the direction can't be changed
      */
     public Vector getDir() {
         return _dir;
@@ -49,11 +53,12 @@ public class Ray {
 
         return result;
     }
+
     /*
     Params:
-o – ray to compare to
-Returns:
-true if direction and head are the same in both rays
+        o – ray to compare to
+    Returns:
+        true if direction and head are the same in both rays
      */
     @Override
     public boolean equals(Object o) {
@@ -69,7 +74,9 @@ true if direction and head are the same in both rays
     }
 
     public Point3D getTargetPoint(double t) {
-
+        if (isZero(t)) {
+            return _p0;
+        }
         return _p0.add(_dir.scale(t));
     }
 

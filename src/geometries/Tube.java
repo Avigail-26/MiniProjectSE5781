@@ -17,10 +17,11 @@ public class Tube extends RadialGeometry {
 
     /**
      * Constructor of the tube class
+     *
      * @param radius
      * @param axisRay
      */
-    public Tube( double radius,Ray axisRay) {
+    public Tube(double radius, Ray axisRay) {
         super(radius);
         _axisRay = axisRay;
     }
@@ -40,6 +41,7 @@ public class Tube extends RadialGeometry {
 
     /**
      * getNormal function, normal vector of a tube
+     *
      * @param p-point3D
      * @return vector
      */
@@ -47,7 +49,7 @@ public class Tube extends RadialGeometry {
     public Vector getNormal(Point3D p) {
         Point3D p0 = _axisRay.getP0();
         Vector v = _axisRay.getDir();
-        if(p.equals(p0)){
+        if (p.equals(p0)) {
             throw new IllegalArgumentException("p cannot be the origin of the tube's axis");
         }
 
@@ -55,7 +57,7 @@ public class Tube extends RadialGeometry {
 
         double t = v.dotProduct(P0_P);
 
-        if (isZero(t)){
+        if (isZero(t)) {
             return P0_P.normalize();
         }
 
@@ -63,9 +65,8 @@ public class Tube extends RadialGeometry {
         // throw new IllegalArgumentException
         try {
             v.crossProduct(P0_P);
-        }
-        catch (IllegalArgumentException e){
-            throw  new IllegalArgumentException("point p cannot be on the tube's axis");
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("point p cannot be on the tube's axis");
         }
 
         Point3D O = p0.add(v.scale(t));
@@ -74,9 +75,8 @@ public class Tube extends RadialGeometry {
     }
 
     /*
-Find intersections for Tube shape
+        Find intersections for Tube shape
      */
-
     @Override
     public List<GeoPoint> findGeoIntersections(Ray ray) {
         return null;
