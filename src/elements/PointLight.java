@@ -71,7 +71,7 @@ _kQ – quadratic attenuation
     }
     @Override
     public Color getIntensity(Point3D p) {
-        return (_intensity.reduce(getAttenuation(p)));
+        return (_intensity.scale(getAttenuation(p)));
     }
 
     /**
@@ -79,7 +79,7 @@ _kQ – quadratic attenuation
      * @return attenuation in that point based on attenuation factors
      */
     protected double getAttenuation(Point3D p) {
-        return _kC + _kL * p.distance(_position) + _kQ * p.distanceSquared(_position);
+       return 1d/ (_kC + _kL * p.distance(_position) + _kQ * p.distanceSquared(_position));
     }
 
     /**
@@ -94,6 +94,11 @@ _kQ – quadratic attenuation
             return null;
         }
         return p.subtract(_position).normalize();
+    }
+
+    @Override
+    public double getDistance(Point3D point){
+        return point.distance(_position);
     }
 
    //@Override

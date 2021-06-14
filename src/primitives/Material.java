@@ -5,16 +5,16 @@ public class Material {
     /**
      * kd diffuse component of material
      */
-    public double _kD;
+    public double kD;
 
     /**
      * specular component of material
      */
-    public double _kS;
+    public double kS;
     /**
      * material's shininess
      */
-    public int _shininess;
+    public int nShininess;
 
 
     /**
@@ -36,18 +36,21 @@ public class Material {
 
      */
     public Material() {
-        _kD = _kS = _shininess = 0;
+        kD =0d;
+        kS = 0d;
+        nShininess = 0;
     }
 
-    public Material setKd(double _kd) {
-        _kD = _kd;
+    public Material setKd(double kd) {
+        this.kD = kd;
         return this;
     }
-    public Material setKs(double _ks) {
-        _kS = _ks;
+    public Material setKs(double ks) {
+        this.kS = ks;
         return this;
     }
-    public void setShininess(int shininess) {
-        _shininess = shininess;
+    public Material setShininess(int nShininess) {
+        this.nShininess = nShininess;
+        return this;
     }
 }

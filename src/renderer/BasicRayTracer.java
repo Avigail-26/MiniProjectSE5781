@@ -2,7 +2,7 @@ package renderer;
 
 import Scene.Scene;
 import elements.LightSource;
-import geometries.Intersectable;
+
 import static geometries.Intersectable.GeoPoint;
 import static primitives.Util.alignZero;
 
@@ -14,11 +14,13 @@ import primitives.Vector;
 
 import java.util.List;
 
-public class RayTracerBasic extends RayTracerBase {
+public class BasicRayTracer extends RayTracerBase {
 
-    public RayTracerBasic(Scene scene) {
+    public BasicRayTracer(Scene scene) {
         super(scene);
     }
+    private static final double DELTA = 0.1;
+
 
     @Override
     public Color traceRay(Ray ray) {
@@ -51,11 +53,11 @@ public class RayTracerBasic extends RayTracerBase {
             return Color.BLACK;
         }
         Material material = intersection.geometry.getMaterial();
-        int nShininess = material._shininess;
-        double kd = material._kD;
-        double ks = material._kS;
+        int nShininess = material.nShininess;
+        double kd = material.kD;
+        double ks = material.kS;
         Color color = Color.BLACK;
-        for (LightSource lightSource : _scene._lights) {
+        for (LightSource lightSource : _scene.lights) {
             Vector l = lightSource.getL(intersection.point);
             double nl = alignZero(n.dotProduct(l));
             if (nl * nv > 0) { // sign(nl) == sing(nv)
@@ -81,5 +83,12 @@ public class RayTracerBasic extends RayTracerBase {
         double factor =kd* Math.abs(l.dotProduct(n));
         return lightIntensity.scale(factor);
 
+    }
+
+    private boolean unshaded(LightSource li, GeoPoint geoPoint){
+        Vector lightDirection = li.getL(geoPoint.point).scale(-1);
+        Ray lightRay= new Ray(geoPoint,lightDirection,DELTA);
+        List<GeoPoint> intersection = _scene.geometries.findGeoIntersections(lightRay,li.getDistance(geoPoint.point));
+        return intersection == null;
     }
 }

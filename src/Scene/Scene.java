@@ -17,21 +17,21 @@ public class Scene {
     /**
      * list of light sources in scene
      */
-    public List<LightSource> _lights;
+    public List<LightSource> lights;
 
     public Geometries geometries;
 
     public Scene(String name) {
         _name = name;
         geometries = new Geometries();
-        this._lights = new LinkedList<LightSource>();
+        this.lights = new LinkedList<LightSource>();
     }
 
     /**
      * @return list of lights in scene
      */
     public List<LightSource> getLights() {
-        return _lights;
+        return lights;
     }
 
     //chaining set methods (this NOT a builder pattern)

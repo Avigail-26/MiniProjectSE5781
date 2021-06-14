@@ -2,16 +2,21 @@ package renderer;
 
 import Scene.Scene;
 import elements.Camera;
+import elements.LightSource;
+import geometries.Intersectable;
 import primitives.Color;
 import primitives.Point3D;
 import primitives.Ray;
 import primitives.Vector;
 
+import java.util.List;
 import java.util.MissingResourceException;
+
+import static primitives.Util.alignZero;
 
 public class Render {
     ImageWriter _imageWriter = null;
-    Scene _scene = null;
+    //Scene _scene = null;
     Camera _camera = null;
     RayTracerBase _rayTracerBase = null;
     private Ray _rayOrigin = null;
@@ -22,9 +27,8 @@ public class Render {
     }
 
     public Render setScene(Scene scene) {
-        _scene = scene;
-        return this;
-    }
+      //  _scene = scene;
+        return this;}
 
     public Render setCamera(Camera camera){
         _camera = camera;
@@ -45,9 +49,9 @@ public class Render {
             if (_imageWriter == null) {
                 throw new MissingResourceException("missing resource", ImageWriter.class.getName(), "");
             }
-            if (_scene == null) {
-                throw new MissingResourceException("missing resource", Scene.class.getName(), "");
-            }
+            //if (_scene == null) {
+              //  throw new MissingResourceException("missing resource", Scene.class.getName(), "");
+            //}
             if (_rayTracerBase == null) {
                 throw new MissingResourceException("missing resource", RayTracerBase.class.getName(), "");
             }
@@ -66,6 +70,7 @@ public class Render {
             throw new UnsupportedOperationException("Not implemented yet" + e.getClassName());
         }
     }
+
 
     public void printGrid(int interval, Color color) {
         int nX = _imageWriter.getNx();

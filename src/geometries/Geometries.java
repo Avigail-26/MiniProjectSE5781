@@ -34,11 +34,11 @@ adds geometries to list
 
 
     @Override
-    public List<GeoPoint> findGeoIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersections(Ray ray, double maxDistance) {
         List<GeoPoint> result = null;
 
         for (Intersectable item : _intersectables) {
-            List<GeoPoint> itemIntersectionPoints = item.findGeoIntersections(ray);
+            List<GeoPoint> itemIntersectionPoints = item.findGeoIntersections(ray, maxDistance);
             if (itemIntersectionPoints != null) {
                 if (result == null) {
                     result = new LinkedList<>();

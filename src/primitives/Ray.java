@@ -35,6 +35,19 @@ public class Ray {
         return _dir;
     }
 
+    /**
+     * builds ray from point and directon and normal
+     * @param geoPoint point that ray starts from
+     * @param lightDirection ray's direction
+     * @param delta to the ray
+     */
+    public Ray(GeoPoint geoPoint, Vector lightDirection,double delta){
+        Vector n = geoPoint.geometry.getNormal(geoPoint.point);
+        Vector offset= n.scale(n.dotProduct((lightDirection))>0 ? delta: -delta);
+        _p0= geoPoint.point.add(offset);
+        _dir=lightDirection.normalized();
+    }
+
     public GeoPoint getClosestGeoPoints(List<GeoPoint> pointList) {
         GeoPoint result = null;
         double closestDistance = Double.MAX_VALUE;

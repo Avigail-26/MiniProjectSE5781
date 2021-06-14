@@ -35,8 +35,8 @@ public class RenderTests {
 		Render render = new Render() //
 				.setImageWriter(imageWriter) //
 				.setCamera(camera) //
-				.setScene(scene)
-				.setRayTracer(new RayTracerBasic(scene));
+				//.setScene(scene)
+				.setRayTracer(new BasicRayTracer(scene));
 
 		render.renderImage();
 		render.printGrid(100, new Color(java.awt.Color.WHITE));

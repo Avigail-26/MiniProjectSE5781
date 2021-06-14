@@ -30,12 +30,10 @@ public class Tube extends RadialGeometry {
         return _axisRay;
     }
 
-    public double getRadius() {
-        return _radius;
-    }
+
 
     @Override
-    public List<Point3D> findIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersections(Ray ray, double distance) {
         return null;
     }
 

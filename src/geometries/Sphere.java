@@ -65,7 +65,7 @@ public class Sphere extends RadialGeometry {
 
 
     @Override
-    public List<GeoPoint> findGeoIntersections(Ray ray) {
+    public List<GeoPoint> findGeoIntersections(Ray ray, double distance) {
         // 𝑢 = 𝑂 − 𝑃0 distance from the center and the p0
         Point3D p0 = ray.getP0();
         Vector v = ray.getDir();
@@ -93,19 +93,20 @@ public class Sphere extends RadialGeometry {
         }
         double t1 = alignZero(tm - th);
         double t2 = alignZero(tm + th);
-
-        if (t1 > 0 && t2 > 0) {
+        boolean t1Valid = alignZero(t1 - distance) <= 0;
+        boolean t2Valid = alignZero(t2 - distance) <= 0;
+        if (t1 > 0 && t2 > 0 && t1Valid && t2Valid) {
             Point3D p1 = p0.add(v.scale(t1));
             Point3D p2 = p0.add(v.scale(t2));
 
             return List.of(new GeoPoint(this, p1), new GeoPoint(this, p2));
         }
-        if (t1 > 0) {
+        if (t1 > 0 && t1Valid) {
             Point3D p1 = p0.add(v.scale(t1));
 
             return List.of(new GeoPoint(this, p1));
         }
-        if (t2 > 0) {
+        if (t2 > 0 && t2Valid) {
             Point3D p2 = p0.add(v.scale(t2));
 
             return List.of(new GeoPoint(this, p2));
@@ -113,46 +114,4 @@ public class Sphere extends RadialGeometry {
         return null;
     }
 
-    @Override
-    public List<Point3D> findIntersections(Ray ray) {
-        Point3D P0 = ray.getP0();
-        Vector v = ray.getDir();
-
-        if (P0.equals(_center)) {
-            return List.of(_center.add(v.scale(_radius)));
-        }
-
-        Vector U = _center.subtract(P0);
-
-        double tm = alignZero(v.dotProduct(U));
-        double d = alignZero(Math.sqrt(U.lengthSquared() - tm * tm));
-
-        // no intersections : the ray direction is above the sphere
-        if (d >= _radius) {
-            return null;
-        }
-
-        double th = alignZero(Math.sqrt(_radius * _radius - d * d));
-        double t1 = alignZero(tm - th);
-        double t2 = alignZero(tm + th);
-
-        if (t1 > 0 && t2 > 0) {
-//            Point3D P1 = P0.add(v.scale(t1));
-//            Point3D P2 = P0.add(v.scale(t2));
-            Point3D P1 = ray.getTargetPoint(t1);
-            Point3D P2 = ray.getTargetPoint(t2);
-            return List.of(P1, P2);
-        }
-        if (t1 > 0) {
-//            Point3D P1 = P0.add(v.scale(t1));
-            Point3D P1 = ray.getTargetPoint(t1);
-            return List.of(P1);
-        }
-        if (t2 > 0) {
-//            Point3D P2 = P0.add(v.scale(t2));
-            Point3D P2 = ray.getTargetPoint(t2);
-            return List.of(P2);
-        }
-        return null;
-    }
-}
+ }
