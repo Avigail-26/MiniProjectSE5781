@@ -1,6 +1,6 @@
 package renderer;
 
-import Scene.Scene;
+import scene.Scene;
 import elements.AmbientLight;
 import elements.Camera;
 import geometries.Sphere;

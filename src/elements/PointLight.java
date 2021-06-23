@@ -37,11 +37,11 @@ _kQ – quadratic attenuation
    // public void setPosition(Point3D position) {this.position = position;}
     /**
      *set the Kc
-     * @param kC1
+     * @param kC
      * there is no No attenuation with distance for kc
      */
-    public PointLight setKc(double kC1) {
-        _kC = kC1;
+    public PointLight setKc(double kC) {
+        _kC = kC;
         return this;
     }
 
@@ -49,11 +49,11 @@ _kQ – quadratic attenuation
      *  chaining method
      *set the kL
      * there is attenuation with distance
-     * @param kL1
+     * @param kL
      * @return PointLight
      */
-    public PointLight setKl(double kL1) {
-        _kL = kL1;
+    public PointLight setKl(double kL) {
+        _kL = kL;
         return this;
     }
 
@@ -62,24 +62,17 @@ _kQ – quadratic attenuation
      *set the kQ
      * kQ -> attenuation with distance squared - The most influential attenuation.
      *
-     * @param kQ1
+     * @param kQ
      * @return PointLight
      */
-    public PointLight setKq(double kQ1) {
-        _kQ = kQ1;
+    public PointLight setKq(double kQ) {
+        _kQ = kQ;
         return this;
     }
     @Override
     public Color getIntensity(Point3D p) {
-        return (_intensity.scale(getAttenuation(p)));
-    }
-
-    /**
-     * @param p point in scene
-     * @return attenuation in that point based on attenuation factors
-     */
-    protected double getAttenuation(Point3D p) {
-       return 1d/ (_kC + _kL * p.distance(_position) + _kQ * p.distanceSquared(_position));
+        double attenuation = 1d/ (_kC + _kL * p.distance(_position) + _kQ * p.distanceSquared(_position));
+        return (_intensity.scale(attenuation));
     }
 
     /**

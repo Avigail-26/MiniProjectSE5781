@@ -22,7 +22,7 @@ public class SpotLight extends PointLight{
      */
     public SpotLight(Color intensity, Point3D pos, Vector dir) {
         super(intensity, pos);
-        _direction = new Vector(dir);
+        _direction = dir.normalized();
     }
 
     /**
@@ -32,9 +32,11 @@ public class SpotLight extends PointLight{
      */
     @Override
     public Color getIntensity(Point3D p) {
-        double lightAngle = _direction.dotProduct(getL(p));
-        if (Util.isZero(lightAngle))//no light shinning on it
-        {
+        Vector l =  getL(p);
+
+        double lightAngle = _direction.dotProduct(l);
+
+        if (Util.isZero(lightAngle)){//no light shinning on the point
             return Color.BLACK;
         }
 

@@ -84,6 +84,9 @@ public class Vector {
      * @return vector- returns a vector multiplied by a scalar=a*v=(a*v1,a*v2,a*v3)
      */
     public Vector scale(double d) {
+        if (isZero(d)){
+            throw new IllegalArgumentException("d cannot be Zero for scaling the vector");
+        }
         return new Vector(_head._x._coord * d, _head._y._coord * d, _head._z._coord * d);
     }
 

@@ -76,6 +76,10 @@ public class Plane extends Geometry
         return _normal;
     }
 
+
+    public Vector getNormal() {
+        return _normal;
+    }
     /**
      * returns intersection point. if ray doesn't intersect or ray's head is on the plane
      */

@@ -16,8 +16,13 @@ public class Material {
      */
     public int nShininess;
 
+    //*  reflection coefficient
+    public double kR;
 
-    /**
+    //* transparency coefficient
+    public double kT;
+
+/**
      * sets all fields
      * @param kD diffuse coefficient
      * @param kS specuflar coefficient
@@ -52,5 +57,13 @@ public class Material {
     public Material setShininess(int nShininess) {
         this.nShininess = nShininess;
         return this;
+    }
+
+    public void setkR(double kR) {
+        this.kR = kR;
+    }
+
+    public void setkT(double kT) {
+        this.kT = kT;
     }
 }

@@ -1,10 +1,11 @@
 package elements;
-import org.junit.jupiter.api.Test;
 
+import elements.*;
 import geometries.*;
+import org.junit.jupiter.api.Test;
 import primitives.*;
 import renderer.*;
-import Scene.*;
+import scene.Scene;
 
 /**
  * Test rendering a basic image

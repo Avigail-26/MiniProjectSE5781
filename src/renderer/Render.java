@@ -1,18 +1,11 @@
 package renderer;
 
-import Scene.Scene;
+import scene.Scene;
 import elements.Camera;
-import elements.LightSource;
-import geometries.Intersectable;
 import primitives.Color;
-import primitives.Point3D;
 import primitives.Ray;
-import primitives.Vector;
 
-import java.util.List;
 import java.util.MissingResourceException;
-
-import static primitives.Util.alignZero;
 
 public class Render {
     ImageWriter _imageWriter = null;

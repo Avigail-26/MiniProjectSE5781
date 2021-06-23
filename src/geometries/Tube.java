@@ -6,6 +6,7 @@ import primitives.Vector;
 
 import java.util.List;
 
+import static primitives.Util.alignZero;
 import static primitives.Util.isZero;
 
 public class Tube extends RadialGeometry {
@@ -53,7 +54,7 @@ public class Tube extends RadialGeometry {
 
         Vector P0_P = p.subtract(p0);
 
-        double t = v.dotProduct(P0_P);
+        double t = alignZero(v.dotProduct(P0_P));
 
         if (isZero(t)) {
             return P0_P.normalize();

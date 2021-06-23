@@ -8,6 +8,8 @@ import geometries.Intersectable.GeoPoint;
 import static primitives.Util.isZero;
 
 public class Ray {
+
+    private static final double DELTA = 0.1;
     /**
      * Fields (point3D,vector)
      */
@@ -21,6 +23,19 @@ public class Ray {
     public Ray(Point3D p0, Vector dir) {
         _p0 = p0;
         _dir = dir.normalized();
+    }
+
+    /**
+     * @param p0  point of origin of the ray
+     * @param dir direction of the ray, normalized
+     * @param n normal of the point
+     *
+     */
+    public Ray(Point3D p0, Vector dir,Vector n) {
+        Vector offset = n.scale(DELTA);
+        _p0 = p0.add(offset);
+        _dir = dir.normalized();
+
     }
 
     public Point3D getP0() {
@@ -116,5 +131,9 @@ public class Ray {
         }
 
         return result;
+    }
+
+    public Point3D getPoint(double t) {
+        return _p0.add(_dir.scale(t));
     }
 }

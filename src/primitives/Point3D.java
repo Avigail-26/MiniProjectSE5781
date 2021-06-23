@@ -49,7 +49,6 @@ true if x y and z are equal in both point
         double xx = (point3D._x._coord - _x._coord) * (point3D._x._coord - _x._coord);
         double yy = (point3D._y._coord - _y._coord) * (point3D._y._coord - _y._coord);
         double zz = (point3D._z._coord - _z._coord) * (point3D._z._coord - _z._coord);
-
         return (xx + yy + zz);
 
     }
@@ -60,7 +59,6 @@ true if x y and z are equal in both point
     public double getY() {
         return _y._coord;
     }
-
     public double getZ() {
         return _z._coord;
     }
@@ -84,11 +82,11 @@ new vector with pt2 subtracted from current point's head
         if (pt2.equals(this)) {
             throw new IllegalArgumentException("cannot create vector to point(0,0,0)");
         }
-        return new Vector(new Point3D(
+        return new Vector(
                 _x._coord - pt2._x._coord,
                 _y._coord - pt2._y._coord,
                 _z._coord - pt2._z._coord
-        ));
+        );
     }
 
     public Point3D add(Vector vector) {

@@ -70,6 +70,7 @@ public abstract class Util {
         return Math.random() * (max - min) + min;
     }
 
+
     public static double round(double value, int place) {
         if (place < 0) throw new IllegalArgumentException();
 
@@ -77,5 +78,5 @@ public abstract class Util {
         bd = bd.setScale(place, RoundingMode.HALF_UP);
         return bd.doubleValue();
     }
-
 }
+
